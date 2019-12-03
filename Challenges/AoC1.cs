@@ -23,9 +23,7 @@ namespace Challenges
         private static long F(long x)
         {
             var res = x / 3 - 2;
-            if (res <= 0)
-                return 0;
-            return res + F(res);
+            return res <= 0 ? 0 : res + F(res);
         }
     }
 }

@@ -46,7 +46,6 @@ namespace Challenges
             {
                 for (var b = 0; b < 100; b++)
                 {
-                    var ins = 0;
                     var i = 0;
                     var p = 0;
                     var d = data.ToDictionary(x => i++, int.Parse);
