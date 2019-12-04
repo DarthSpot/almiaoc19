@@ -12,6 +12,13 @@ namespace Challenges
             
         }
 
+        private static Func<int, int, int> o(int c) => c switch
+            {
+                1 => (x, y) => x + y,
+                2 => (x, y) => x * y,
+            };
+
+
         public override string CalculateSimple()
         {
             var i = 0;
@@ -19,14 +26,9 @@ namespace Challenges
             var d = GetInput().Split(',').ToDictionary(x => i++, int.Parse);
             d[1] = 12;
             d[2] = 2;
-            var o = new Dictionary<int, Func<int, int, int>>()
-            {
-                {1, (x,y)=>x+y},
-                {2, (x,y)=>x*y},
-            };
             while (d[p]!=99)
             {
-                d[d[p + 3]] = o[d[p]](d[d[p + 1]], d[d[p + 2]]);
+                d[d[p + 3]] = o(d[p])(d[d[p + 1]], d[d[p + 2]]);
                 p += 4;
             }
 
@@ -37,11 +39,6 @@ namespace Challenges
         {
             
             var data = GetInput().Split(',');
-            var o = new Dictionary<int, Func<int, int, int>>()
-            {
-                {1, (x,y)=>x+y},
-                {2, (x,y)=>x*y},
-            };
             for (var a = 0; a < 100; a++)
             {
                 for (var b = 0; b < 100; b++)
@@ -53,7 +50,7 @@ namespace Challenges
                     d[2] = b;
                     while (d[p] != 99)
                     {
-                        d[d[p + 3]] = o[d[p]](d[d[p + 1]], d[d[p + 2]]);
+                        d[d[p + 3]] = o(d[p])(d[d[p + 1]], d[d[p + 2]]);
                         p += 4;
                     }
 
