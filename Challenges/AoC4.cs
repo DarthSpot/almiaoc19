@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -14,22 +15,17 @@ namespace Challenges
 
         public override string CalculateSimple()
         {
-
             var c = 0;
             for (var x = 124075; x <= 580769; x++)
             {
-                if (!string.Equals(string.Concat(x.ToString().OrderBy(o => o)), x.ToString()))
+                var xs = x + "";
+                if (!S(xs))
                     continue;
 
-                var xr = x.ToString().ToCharArray();
-                var pr = new[] {0, 1, 2, 3, 4};
-                if (pr.Any(q => xr[q] == xr[q+1]))
+                if (Regex.Matches(xs, "(.)\\1{1,}").Any())
                     c++;
             }
-
-
-            return c.ToString();
-
+            return c+"";
         }
 
         public override string CalculateExtended()
@@ -37,19 +33,19 @@ namespace Challenges
             var c = 0;
             for (var x = 124075; x <= 580769; x++)
             {
-                var xs = x.ToString();
-                if (!string.Equals(string.Concat(xs.OrderBy(o => o)), xs))
+                var xs = x + "";
+                if (!S(xs))
                     continue;
 
-                var xr = x.ToString().ToCharArray();
-                var pr = new[] {0, 1, 2, 3, 4};
-                if (pr.Any(pq =>
-                    xr[pq] == xr[pq + 1] && (pq == 0 || xr[pq - 1] != xr[pq]) && (pq == 4 || xr[pq + 2] != xr[pq])))
+                if (Regex.Matches(xs, "(.)\\1{1,}").Any(m => m.Length == 2))
                     c++;
             }
+            return c+"";
+        }
 
-
-            return c.ToString();
+        private bool S(string s)
+        {
+            return string.Concat(s.OrderBy(x => x)).Equals(s);
         }
     }
 }
