@@ -13,39 +13,10 @@ namespace Challenges
         {
         }
 
-        public override string CalculateSimple()
-        {
-            var c = 0;
-            for (var x = 124075; x <= 580769; x++)
-            {
-                var xs = x + "";
-                if (!S(xs))
-                    continue;
-
-                if (Regex.Matches(xs, "(.)\\1{1,}").Any())
-                    c++;
-            }
-            return c+"";
-        }
-
-        public override string CalculateExtended()
-        {
-            var c = 0;
-            for (var x = 124075; x <= 580769; x++)
-            {
-                var xs = x + "";
-                if (!S(xs))
-                    continue;
-
-                if (Regex.Matches(xs, "(.)\\1{1,}").Any(m => m.Length == 2))
-                    c++;
-            }
-            return c+"";
-        }
-
-        private bool S(string s)
-        {
-            return string.Concat(s.OrderBy(x => x)).Equals(s);
-        }
+        int s = 124075;
+        int e = 580769;
+        public override string CalculateSimple() => Enumerable.Range(s, e-s).Count(x => S(x+"") && Regex.Matches(x+"", "(.)\\1{1,}").Any())+"";
+        public override string CalculateExtended() => Enumerable.Range(s, e-s).Count(x => S(x+"") && Regex.Matches(x+"", "(.)\\1{1,}").Any(m => m.Length == 2))+"";
+        private bool S(string s) => string.Concat(s.OrderBy(x => x)).Equals(s);
     }
 }
