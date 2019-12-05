@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using AoCCore;
 
 namespace Challenges
@@ -11,15 +9,9 @@ namespace Challenges
         {
         }
 
-        public override string CalculateSimple()
-        {
-            return Calc(1);
-        }
+        public override string CalculateSimple() => Calc(1);
         
-        public override string CalculateExtended()
-        {
-            return Calc(5);
-        }
+        public override string CalculateExtended() => Calc(5);
 
         private string Calc(int input)
         {
@@ -35,7 +27,6 @@ namespace Challenges
                 var args = (ins + "").PadLeft(5, '0').Reverse().Skip(2).ToArray();
                 int P(int o) => args[o - 1] == '0' ? d[d[p + o]] : d[p + o];
                 void S(int o, int v) => d[d[o]] = v;
-
                 switch (op)
                 {
                     case 1:
