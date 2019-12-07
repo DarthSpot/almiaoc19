@@ -15,6 +15,7 @@ namespace Challenges
             _tools.Add(4, new AoC4(4));
             _tools.Add(5, new AoC5(5));
             _tools.Add(6, new AoC6(6));
+            _tools.Add(7, new AoC7(7));
         }
 
         public AoCTool this[int task] => _tools.ContainsKey(task) ? _tools[task] : null;
