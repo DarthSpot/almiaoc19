@@ -12,7 +12,6 @@ namespace Challenges
     {
         public AoC7(int num) : base(num)
         {
-            var i = 0;
             Input = GetInput().Split(',').Select(int.Parse).ToList();
         }
 
