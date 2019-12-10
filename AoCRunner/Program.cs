@@ -10,7 +10,7 @@ namespace AoCRunner
         {
             var t = new TaskSelector();
 
-            var task = 9;
+            var task = 10;
 
             var sw = new Stopwatch();
             sw.Start();
