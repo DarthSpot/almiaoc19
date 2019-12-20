@@ -25,7 +25,9 @@ namespace Challenges
                 new AoC12(12),
                 new AoC13(13),
                 new AoC14(14),
-                new AoC15(15)
+                new AoC15(15),
+                new AoC16(16),
+                new AoC17(17),
             };
         }
 
